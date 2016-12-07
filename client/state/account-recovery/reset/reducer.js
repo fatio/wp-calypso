@@ -22,6 +22,7 @@ const resetOptions = createReducer( {}, {
 	[ ACCOUNT_RECOVERY_RESET_OPTIONS_RECEIVE ]: ( state, { options } ) => ( {
 		...state,
 		isRequesting: false,
+		error: undefined,
 		options,
 	} ),
 	[ ACCOUNT_RECOVERY_RESET_OPTIONS_ERROR ]: ( state, { error } ) => ( {

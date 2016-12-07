@@ -8,7 +8,7 @@ import {
 	ACCOUNT_RECOVERY_RESET_OPTIONS_REQUEST,
 } from 'state/action-types';
 
-export function getResetOptions( userData ) {
+export function fetchResetOptions( userData ) {
 	return ( dispatch ) => {
 		dispatch( { type: ACCOUNT_RECOVERY_RESET_OPTIONS_REQUEST } );
 
