@@ -40,6 +40,25 @@ export function normalizeWpcomTheme( theme ) {
 }
 
 /**
+ * Normalizes a theme obtained from the WordPress.org REST API
+ *
+ * @param  {Object} theme  Themes object
+ * @return {Object}        Normalized theme object
+ */
+export function normalizeWporgTheme( theme ) {
+	const attributesMap = {
+		slug: 'id',
+		preview_url: 'demo_uri',
+		screenshot_url: 'screenshot',
+		download_link: 'download'
+	};
+
+	return mapKeys( theme, ( value, key ) => (
+		get( attributesMap, key, key )
+	) );
+}
+
+/**
  * Given a theme stylesheet string (like 'pub/twentysixteen'), returns the corresponding theme ID ('twentysixteen').
  *
  * @param  {String}  stylesheet Theme stylesheet
