@@ -17,7 +17,8 @@ import FormLabel from 'components/forms/form-label';
 import FormCheckbox from 'components/forms/form-checkbox';
 import JetpackModuleToggle from '../jetpack-module-toggle';
 import FormFieldset from 'components/forms/form-fieldset';
-import InfoPopover from 'components/info-popover';
+import InfoLink from 'components/info-link';
+
 import { isModuleActive, getModule } from 'state/jetpack-settings/modules/selectors';
 
 const MediaSettings = ( props ) => {
@@ -34,11 +35,9 @@ const MediaSettings = ( props ) => {
 			</SectionHeader>
 			<Card className="media-settings__card site-settings">
 				<FormFieldset>
-					<div className="media-settings__fieldset-infopopover">
-						<InfoPopover>
-							{ props.photonDescription }
-						</InfoPopover>
-					</div>
+					<InfoLink>
+						{ props.photonDescription }
+					</InfoLink>
 					<JetpackModuleToggle
 						siteId={ props.site.ID }
 						moduleSlug="photon"
@@ -47,11 +46,9 @@ const MediaSettings = ( props ) => {
 						/>
 				</FormFieldset>
 				<FormFieldset className="has-divider is-top-only">
-					<div className="media-settings__fieldset-infopopover">
-						<InfoPopover>
-							{ props.carouselDescription }
-						</InfoPopover>
-					</div>
+					<InfoLink>
+						{ props.carouselDescription }
+					</InfoLink>
 					<JetpackModuleToggle
 						siteId={ props.site.ID }
 						moduleSlug="carousel"
