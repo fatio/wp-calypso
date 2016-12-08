@@ -67,12 +67,7 @@ Undocumented.prototype.mailingList = function( category ) {
  */
 Undocumented.prototype.getJetpackJumpstart = function( siteId, fn ) {
 	//@TODO: implement and test this endpoint, it's currently not working
-	return this.wpcom.req.get( {
-		path: '/jetpack-blogs/' + siteId + '/rest-api/',
-		body: {
-			path: '/jumpstart/'
-		}
-	}, fn );
+	return this.wpcom.req.get( { path: '/jetpack-blogs/' + siteId + '/rest-api/' }, { path: '/jumpstart/' }, fn );
 };
 
 /*
@@ -87,12 +82,8 @@ Undocumented.prototype.updateJetpackJumpstart = function( siteId, active, fn ) {
 	//@TODO: implement and test this endpoint, it's currently not working
 	return this.wpcom.req.post( {
 		path: '/jetpack-blogs/' + siteId + '/rest-api/',
-		query: {
-			path: '/jumpstart/'
-		},
-		body: {
-			active
-		}
+		query: { path: '/jumpstart/' },
+		body: { active }
 	}, fn );
 };
 
