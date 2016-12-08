@@ -53,11 +53,17 @@ export function normalizeWporgTheme( theme ) {
 		download_link: 'download'
 	};
 
+	const normalizedTheme = mapKeys( theme, ( value, key ) => (
+		get( attributesMap, key, key )
+	) );
+
+	if ( ! normalizedTheme.tags ) {
+		return normalizedTheme;
+	}
+
 	return {
-		...mapKeys( theme, ( value, key ) => (
-			get( attributesMap, key, key )
-		) ),
-		taxonomies: { theme_feature: map( theme.tags,
+		...omit( normalizedTheme, 'tags' ),
+		taxonomies: { theme_feature: map( normalizedTheme.tags,
 			( name, slug ) => ( { name, slug } )
 		) }
 	};
