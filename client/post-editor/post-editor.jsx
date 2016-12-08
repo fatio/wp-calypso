@@ -315,7 +315,6 @@ export const PostEditor = React.createClass( {
 				</div>
 				{ isTrashed
 					? <RestorePostDialog
-						post={ this.state.post }
 						onClose={ this.onClose }
 						onRestore={ this.onSaveTrashed }
 					/>
@@ -334,7 +333,6 @@ export const PostEditor = React.createClass( {
 				: null }
 				{ hasAutosave && this.state.showAutosaveDialog
 					? <RestorePostDialog
-						post={ this.state.post }
 						onRestore={ this.restoreAutosave }
 						onClose={ this.closeAutosaveDialog }
 						isAutosave={ true }
