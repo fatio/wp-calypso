@@ -252,8 +252,8 @@ describe( 'MediaQueryManager', () => {
 
 			it( 'should reverse order when specified as ascending', () => {
 				const sorted = [
-					{ ID: 200 },
-					{ ID: 400 }
+					{ ID: 400 },
+					{ ID: 200 }
 				].sort( manager.sort.bind( manager, {
 					order_by: 'ID',
 					order: 'ASC'
@@ -293,28 +293,28 @@ describe( 'MediaQueryManager', () => {
 			} );
 
 			context( 'title', () => {
-				const aMedia = {
+				const abMedia = {
 					...DEFAULT_MEDIA,
-					title: 'a'
+					title: 'AB'
 				};
 
-				const zMedia = {
+				const aaMedia = {
 					...DEFAULT_MEDIA,
 					ID: 152,
-					title: 'z'
+					title: 'Aa'
 				};
 
 				it( 'should sort by title', () => {
 					const sorted = [
-						aMedia,
-						zMedia
+						aaMedia,
+						abMedia
 					].sort( manager.sort.bind( manager, {
 						order_by: 'title'
 					} ) );
 
 					expect( sorted ).to.eql( [
-						zMedia,
-						aMedia
+						abMedia,
+						aaMedia
 					] );
 				} );
 			} );
