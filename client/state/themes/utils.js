@@ -2,7 +2,7 @@
  * External dependencies
  */
 import startsWith from 'lodash/startsWith';
-import { filter, get, mapKeys, omit, omitBy, split } from 'lodash';
+import { filter, get, map, mapKeys, omit, omitBy, split } from 'lodash';
 
 /**
  * Internal dependencies
@@ -53,9 +53,14 @@ export function normalizeWporgTheme( theme ) {
 		download_link: 'download'
 	};
 
-	return mapKeys( theme, ( value, key ) => (
-		get( attributesMap, key, key )
-	) );
+	return {
+		...mapKeys( theme, ( value, key ) => (
+			get( attributesMap, key, key )
+		) ),
+		taxonomies: { theme_feature: map( theme.tags,
+			( name, slug ) => ( { name, slug } )
+		) }
+	};
 }
 
 /**
