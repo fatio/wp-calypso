@@ -8,7 +8,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import i18n from 'i18n-calypso';
 import titlecase from 'to-title-case';
-import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -572,20 +571,13 @@ export default connect(
 		const selectedSite = getSelectedSite( state );
 		const siteSlug = selectedSite ? getSiteSlug( state, selectedSite.ID ) : '';
 		const isJetpack = selectedSite && isJetpackSite( state, selectedSite.ID );
-		const isOnWporg = isJetpack && ! getThemeRequestErrors( state, id, 'wporg' );
 		const siteIdOrWpcom = isJetpack ? selectedSite.ID : 'wpcom';
 		const backPath = getBackPath( state );
 		const currentUserId = getCurrentUserId( state );
 		const isCurrentUserPaid = isUserPaid( state, currentUserId );
-		let theme = getTheme( state, siteIdOrWpcom, id );
+		const theme = getTheme( state, siteIdOrWpcom, id );
 		const error = theme ? false : getThemeRequestErrors( state, id, siteIdOrWpcom );
-		if ( isOnWporg ) {
-			const themeOnWporg = getTheme( state, 'wporg', id );
-			theme = {
-				...theme,
-				demo_uri: get( themeOnWporg, 'demo_uri' )
-			};
-		}
+
 		return {
 			...theme,
 			id,
